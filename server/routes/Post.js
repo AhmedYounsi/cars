@@ -45,16 +45,7 @@ router.get("/get_posts", (req, res) => {
       res.status(500).send({ msg: "Server Error" });
     });
 });
-//Get user postes
-router.get("/myPosts", authMiddleware, (req, res) => {
-  User.find({ owner: req.userId })
-    .then((post) => res.send(posts))
-    .catch((err) => {
-      console.error(err.message);
-      res.status(500).send({ msg: "Server Error" });
-    });
-});
-
+//Get one postes
 router.post("/single_post", async (req, res) => {
 
     const post = await Post.findById(req.body.id);

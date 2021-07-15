@@ -8,12 +8,7 @@ const app = express();
 const server = require("http").createServer(app);
 app.use(cors());
 
-const io = require("socket.io")(server, {
-  cors: {
-    origin: "http://localhost:3000",
-    methods: ["GET", "POST"],
-  },
-});
+const io = require("socket.io")(server);
 
 const { v4: uuidv4 } = require("uuid");
 
@@ -34,6 +29,8 @@ io.on("connection", (socket) => {
     socket.emit("Comment", post_commented);
   });
 
+
+  // ADD COMMENT
   socket.on("Comment", async (data) => {
     let one_comment = {
       author_id: data.UserData._id,
@@ -41,10 +38,9 @@ io.on("connection", (socket) => {
       text: data.comment,
       comment_id: uuidv4(),
     };
-
+   
     const post_commented = await Comment.findOne({ post_id: data.post_id });
-    console.log(post_commented);
-
+  
     if (post_commented) {
       const post = await Comment.findOneAndUpdate(
         { post_id: data.post_id },
@@ -63,6 +59,8 @@ io.on("connection", (socket) => {
     }
   });
 
+
+  // LIKE POST
   socket.on("LIKE", async (data) => {
     const liked_post = await Post.findById(data.PostId);
     if (!liked_post) return;

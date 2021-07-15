@@ -9,9 +9,9 @@ const User = require('../models/User')
 require('dotenv').config()
 
 //LOAD CONNECTED USER
-router.get("/", authMiddleware, (req, res) => {
-  res.send(req.user);
-});
+// router.get("/", authMiddleware, (req, res) => {
+//   res.send(req.user);
+// });
 // LOGIN USER
 router.post("/", async (req, res) => {
 
