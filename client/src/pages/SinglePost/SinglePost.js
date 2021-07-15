@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import "./SinglePost.css";
 import io from "socket.io-client";
 // const socket = io("https://camping-app-tun.herokuapp.com/")
-const socket = io("http://localhost:5000");
+const socket = io("");
 import { BrowserRouter as Router, useParams } from "react-router-dom";
 import axios from "axios";
 
@@ -23,7 +23,6 @@ function SinglePost() {
     get_post();
 
     socket.on("LIKE_ONE", (data) => {
-   
       setonepost(data)
       setLIKES(data.likes.length)
     });
@@ -74,7 +73,7 @@ function SinglePost() {
   };
 
   return (
-    <div >
+    <div style={{ paddingBottom:'10vh' }}>
        {
         !onepost._id && 
         <div  className="spinner-border text-primary" role="status">

@@ -1,7 +1,7 @@
 .post{
     display: flex;
     flex-direction: column;
-    width: 400px;
+    width: 700px;
     justify-content: center;
     align-items: center;
     margin: auto;
@@ -197,6 +197,7 @@ body {
 }
 
 .reply-list .comment-box {
+  margin-bottom: 20px;
   width: 610px;
 }
 .comment-box .comment-head {
@@ -283,10 +284,23 @@ body {
 
   .comments-list .comment-box {
     width: 390px;
+  
   }
 
   .reply-list .comment-box {
     width: 320px;
+  }
+}
+
+@media screen and (max-width:900px){
+  .post{
+    width:500px
+  }
+}
+
+@media screen and (max-width:600px){
+  .post{
+    width:100%
   }
 }
  

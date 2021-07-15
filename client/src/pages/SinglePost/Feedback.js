@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import io from "socket.io-client";
-const socket = io("http://localhost:5000");
+const socket = io("");
+
 function Feedback(props) {
   var Post = [];
   Post = useSelector((state) => state.SinglePost);

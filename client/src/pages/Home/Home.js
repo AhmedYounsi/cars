@@ -9,12 +9,12 @@ import { useHistory } from "react-router-dom";
 import NewPost from "../NewPost/NewPost";
 
 import io from "socket.io-client";
-const socket = io("http://localhost:5000");
+const socket = io("");
 
 const Home = () => {
   const history = useHistory();
   const dispatch = useDispatch();
-
+  const [Loading, setLoading] = useState(true)
   const [Array, setArray] = useState([]);
   const [DisableLIKE, setDisableLIKE] = useState(false);
   const UserData = useSelector((state) => state.UserData);
@@ -67,6 +67,7 @@ const Home = () => {
         dispatch(SetData(res.data));
         setArray(res.data);
         setLISTS(res.data);
+        setLoading(false)
       })
       .catch(function (error) {
         // handle error
@@ -95,7 +96,7 @@ const Home = () => {
       <div>
         <h2>Showroom Cars</h2>
         {
-        LISTS.length === 0 && 
+        Loading && 
         <div  className="spinner-border text-primary" role="status">
         <span className="sr-only">Loading...</span>
       </div>

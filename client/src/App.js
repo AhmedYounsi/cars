@@ -35,7 +35,7 @@ function App() {
 
   return (
       <div  >
-    <img className="wallpaper" src={"./images/showroom.jpg"} alt="" />
+    <img className="wallpaper" src={"https://res.cloudinary.com/dg3ftjfp0/image/upload/v1626367303/showroom_esqhbb.jpg"} alt="" />
     <Router>
       <NavBar />
       <Switch>

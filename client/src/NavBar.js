@@ -31,13 +31,16 @@ const NavBar = () => {
           <ul className="menuItems">
             <li>
               <Link to="/" className="li">
-                <Button variant="outline-primary">Accueil</Button>
+                <Button variant="outline-primary">
+                <i style={{ marginRight:5 }}  className="fas fa-home"></i>
+                  Accueil</Button>
               </Link>
             </li>
             {!TokenReducer ? (
               <li>
                 <Link to="/Login" className="li">
                   <Button variant="outline-primary">
+                  <i style={{ marginRight:5 }} className="fas fa-sign-in-alt"></i>
                     Authentifier
                   </Button>
                 </Link>
